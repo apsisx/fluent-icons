@@ -52,11 +52,11 @@
 <template>
 	<main>
 		<input type="text"
-			class="form-control w-100 bg-secondary bg-opacity-10 form-control-sm rounded-fill border-0 fs-8"
+			class="form-control-lg w-100 bg-secondary bg-opacity-10 form-control-sm rounded-fill border-0 fs-9 text-dark"
 			v-model="searchTerm" placeholder="Search for icon">
-		<div class="d-flex">
-			<div class="form-check">
-				<input class="form-check-input" type="radio" name="filled" id="filled" value="filled"
+		<div class="d-flex t-9">
+			<div class="form-check m-4">
+				<input class="form-check-input " type="radio" name="filled" id="filled" value="filled"
 					v-model="activeList">
 				<label class="form-check-label" for="filled">
 					Filled Icon
@@ -70,7 +70,7 @@
 				</label>
 			</div>
 		</div>
-		<ul class="d-flex flex-wrap">
+		<ul class="nav">
 			<li v-for="(icon, index) in filtered.slice(0,100)">
 				<div class="preview">
 					<span class="inner">
