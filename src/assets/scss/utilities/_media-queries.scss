@@ -1,0 +1,25 @@
+/*
+    Usage:
+    @include for-size($size) {    
+      //code
+    }
+*/
+@mixin for-size($size) {
+    @if $size == phone {
+        @media (max-width: 576px) {
+            @content;
+        }
+    } @else if $size == tablet {
+        @media (max-width: 991px) {
+            @content;
+        }
+    } @else if $size == desktop-lg {
+        @media (max-width: 1024px) {
+            @content;
+        }
+    } @else if $size == desktop-xl {
+        @media (max-width: 1440px) {
+            @content;
+        }
+    }
+}

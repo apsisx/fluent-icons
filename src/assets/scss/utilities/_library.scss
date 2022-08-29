@@ -1,0 +1,153 @@
+.vs--searchable .vs__dropdown-toggle {
+    border: none !important;
+}
+.form-wizard-vue {
+    position: relative !important;
+    .fw-body-list {
+        position: absolute !important;
+        padding-left: unset;
+        margin-bottom: unset;
+        right: 1rem;
+        top: -110px;
+        bottom: 0;
+        gap: 0.3rem;
+        li {
+            padding: unset !important;
+            flex: unset !important;
+            .fw-list-progress,
+            .fw-step-container,
+            .fw-step-title {
+                display: none !important;
+            }
+            .fw-list-wrapper-icon {
+                width: 10px !important;
+                height: 10px !important;
+                background-color: #972a2e !important;
+                border-radius: 100% !important;
+                &.fw-step-active {
+                    background: $white !important;
+                }
+                &.fw-step-checked {
+                    border: unset !important;
+                }
+            }
+        }
+    }
+    .fw-body {
+        &-content {
+            padding: unset !important;
+        }
+    }
+    .fw-footer {
+        padding: unset !important;
+        display: grid !important;
+        grid-auto-flow: column;
+        gap: 0.5rem;
+        justify-content: unset !important;
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+        &-left,
+        &-right {
+            width: 100%;
+            span[role="button"] {
+                display: block;
+                width: 100%;
+            }
+            .fw-btn {
+                width: 100%;
+                background: $dark !important;
+                border-radius: 0.5rem !important;
+                padding-top: 0.75rem !important;
+                padding-bottom: 0.75rem !important;
+                font-weight: 500 !important;
+                font-family: $poppins !important;
+                font-size: 0.9rem !important;
+                &.fw-btn-back {
+                    background: #fff !important;
+                    color: #333 !important;
+                    border: 1px solid #ebebeb !important;
+                }
+            }
+            &:empty {
+                display: none;
+            }
+        }
+    }
+}
+.error.list-unstyled {
+    font-size: 0.9rem;
+    line-height: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 0.5rem;
+    margin-top: 0.7rem;
+    @include for-size(phone) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+.dp-menu {
+    font-family: $poppins !important;
+    font-size: 0.9rem !important;
+}
+.dp__input {
+    background-color: transparent !important;
+    border: unset !important;
+}
+.dp__theme_light {
+    --dp-background-color: #ffffff !important;
+    --dp-text-color: #212121 !important;
+    --dp-hover-color: #f3f3f3 !important;
+    --dp-hover-text-color: #212121 !important;
+    --dp-hover-icon-color: #959595 !important;
+    --dp-primary-color: #4d70ed !important;
+    --dp-primary-text-color: #f8f5f5 !important;
+    --dp-secondary-color: #c0c4cc !important;
+    --dp-border-color: #ddd !important;
+    --dp-menu-border-color: #ddd !important;
+    --dp-border-color-hover: #aaaeb7 !important;
+    --dp-disabled-color: #f6f6f6 !important;
+    --dp-scroll-bar-background: #f3f3f3 !important;
+    --dp-scroll-bar-color: #959595 !important;
+    --dp-success-color: #a7d454f !important;
+    --dp-success-color-disabled: #a3d9b1 !important;
+    --dp-icon-color: #959595 !important;
+    --dp-danger-color: #ff8673 !important;
+    --dp-highlight-color: #efefef !important;
+}
+.v-select {
+    padding-left: 0.8rem !important;
+}
+.vs--single .vs__selected {
+    background-color: transparent;
+    border-color: transparent;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    padding-top: 0rem;
+    padding-left: 0rem;
+    margin-left: -0.2rem;
+}
+.vs__dropdown-toggle {
+    align-items: flex-start !important;
+    border: none !important;
+}
+.vs__search,
+.vs__search:focus {
+    font-size: 0.9rem !important;
+    padding-top: 0rem !important;
+    padding-left: unset !important;
+}
+.vs--disabled .vs__clear,
+.vs--disabled .vs__dropdown-toggle,
+.vs--disabled .vs__open-indicator,
+.vs--disabled .vs__search,
+.vs--disabled .vs__selected {
+    background-color: transparent !important;
+}
+/*==========?????????===========*/
+.card .nav-pills a.nav-link {
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,179 @@
+#login {
+    position: relative;
+    margin-top: -86px;
+    padding: 86px 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 100vh;
+    .login {
+        margin: 0 auto;
+        max-width: 700px;
+        &-form {
+            display: flex;
+            flex-direction: column;
+            &-content {
+                max-width: 560px;
+                .form-title {
+                    font-weight: 700;
+                    margin-top: 2rem;
+                    margin-bottom: unset;
+                }
+                .form-desc {
+                    font-size: 0.9rem;
+                    color: #666;
+                    margin: 0 auto;
+                    text-align: left;
+                    margin-bottom: 2rem;
+                    line-height: 1rem;
+                }
+                @include for-size(tablet) {
+                    max-width: unset;
+                }
+            }
+            @include for-size(tablet) {
+                min-height: unset;
+            }
+        }
+        &-mascot {
+            @include for-size(tablet) {
+                img {
+                    width: 600px;
+                }
+            }
+            @include for-size(phone) {
+                display: none;
+            }
+        }
+        &-switch {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+            &-card {
+                overflow: hidden;
+                background-color: $white;
+                border: 1px solid #f1f1f1;
+                padding: 1rem;
+                border-radius: 0.5rem;
+                min-height: 100px;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                gap: 0.5rem;
+                font-weight: 600;
+                font-size: 1.2rem;
+                color: #333;
+                transition: border-color 0.6s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+                .icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 100%;
+                    background-color: $light;
+                    transition: all 0.4s ease-in-out;
+                    flex: none;
+                    img {
+                        transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+                    }
+                }
+                &:hover {
+                    color: $white;
+                    border-color: $dark;
+                    .icon {
+                        background-color: #2e2e2e;
+                        box-shadow: 0px 0 0 900px $dark;
+                        img {
+                            @extend .filter-light;
+                        }
+                    }
+                }
+                &.active {
+                    // border-color: $primary;
+                    color: $white;
+                    border-color: $primary;
+                    .icon {
+                        background-color: $primary;
+                        box-shadow: 0px 0 0 900px $primary;
+                        img {
+                            @extend .filter-light;
+                        }
+                        @include for-size(phone) {
+                            background-color: #972a2e;
+                            box-shadow: 0px 0 0 900px #831115;
+                        }
+                    }
+                    @include for-size(phone) {
+                        border-color: #972a2e;
+                    }
+                }
+                &.active {
+                    @include for-size(phone) {
+                        order: 1;
+                    }
+                }
+            }
+            @include for-size(phone) {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    }
+    &::before {
+        content: "";
+        background: url(/assets/images/backgrounds/login.svg) no-repeat center;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 50%;
+        height: 100%;
+        background-size: cover;
+        background-position: right;
+        z-index: -1;
+        @include for-size(tablet) {
+            position: absolute;
+        }
+    }
+    @include for-size(tablet) {
+        padding-bottom: 2rem;
+        &::before {
+            background: url(/assets/images/backgrounds/login-horizontal.svg) no-repeat center;
+            height: 500px;
+            width: 100%;
+            background-size: cover;
+        }
+    }
+    @include for-size(phone) {
+        padding-top: 100px;
+        align-items: flex-start;
+    }
+}
+.btn-lbl {
+    @include for-size(tablet) {
+        display: none;
+    }
+}
+.form-title {
+    @include for-size(phone) {
+        color: $white;
+        text-shadow: 0 0 4px #831115;
+        span {
+            color: $white !important;
+        }
+    }
+}
+.form-desc {
+    @include for-size(phone) {
+        font-size: 0.8rem;
+        line-height: 1;
+        color: $white !important;
+        background-color: $primary;
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
+    }
+}
+.form-floating {
+    margin-bottom: 0.4rem;
+}

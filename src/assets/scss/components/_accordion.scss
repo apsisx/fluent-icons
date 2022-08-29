@@ -1,0 +1,219 @@
+.accordion {
+    &.accordion-filter {
+        .accordion-item {
+            background-color: #e7e7e7;
+            border: unset;
+            margin-bottom: 0.5rem;
+            border-radius: unset;
+            .accordion-header {
+                .accordion-button {
+                    position: relative;
+                    padding: 1rem;
+                    background-color: #e7e7e7;
+                    font-size: 0.9rem;
+                    border-radius: unset;
+                    &:not(.collapsed) {
+                        box-shadow: unset;
+                        color: $text-color;
+                    }
+                }
+            }
+            .accordion-body {
+                background-color: #fbfbfb;
+                padding: 1rem;
+                border-bottom: 1px solid #eaeaea;
+            }
+        }
+    }
+    &.accordion-match {
+        .accordion-item {
+            background-color: $white;
+            border-color: transparent;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            .accordion-header {
+                .accordion-button {
+                    color: $text-color;
+                    .school {
+                        display: flex;
+                        align-items: center;
+                        position: relative;
+                        gap: 1rem;
+                        width: 100%;
+                        &-logo {
+                            min-width: 120px;
+                            max-width: 120px;
+                            height: 120px;
+                            background-color: $white;
+                            text-align: center;
+                            border-radius: 0.5rem;
+                            overflow: hidden;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                        &-content {
+                            width: 100%;
+                            .school-name {
+                                background-color: #f1f1f1;
+                                border-radius: 0.3rem;
+                                padding: 0.2rem 0.5rem;
+                                font-size: 0.8rem;
+                                display: inline-block;
+                                margin-bottom: 0.4rem;
+                            }
+                            .title {
+                                font-weight: 700;
+                                @include threeDots(2);
+                            }
+                            .desc {
+                                @include threeDots(2);
+                                font-size: 0.75rem;
+                                color: #999999;
+                                max-width: 800px;
+                            }
+                        }
+                        @include for-size(tablet) {
+                            flex-direction: column;
+                            align-items: flex-start;
+                        }
+                    }
+                    &:not(.collapsed) {
+                        color: $text-color;
+                        background-color: unset;
+                        border-bottom: 1px solid #eaeaea;
+                        box-shadow: unset;
+                    }
+                    @include for-size(tablet) {
+                        flex-direction: column;
+                        .accordion-button-actions {
+                            margin-right: auto;
+                            margin-left: unset;
+                        }
+                        &::after {
+                            position: absolute;
+                            right: 1rem;
+                            top: 1rem;
+                        }
+                    }
+                    @include for-size(phone) {
+                        .accordion-button-actions {
+                            flex-direction: column;
+                            margin-right: unset;
+                            width: 100%;
+                            .btn,
+                            .form-control,
+                            .form-select,
+                            .form-date {
+                                width: 100%;
+                                text-align: center;
+                                justify-content: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.accordion-programs {
+        .accordion-item {
+            background-color: #f8f8f8;
+            box-shadow: unset;
+            border: unset;
+            .accordion-header {
+                .accordion-button {
+                    gap: 1rem;
+                    background-color: #f8f8f8;
+                    &::after {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    &.accordion-programs-school {
+        .accordion-item {
+            .accordion-header {
+                .accordion-button {
+                    &::after {
+                        display: flex;
+                    }
+                }
+            }
+        }
+        .prop-list {
+            grid-auto-flow: column;
+            grid-template-columns: unset;
+        }
+    }
+    &.accordion-programs-white {
+        .accordion-item {
+            .accordion-header {
+                .accordion-button {
+                    background-color: $white;
+                    @extend .shadow-line;
+                    &:not(.collapsed) {
+                        background-color: $white;
+                    }
+                }
+            }
+            .accordion-body {
+                background-color: $white;
+                @extend .shadow-line;
+            }
+        }
+    }
+}
+.accordion-button-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+    width: inherit;
+    justify-content: flex-end;
+    .btn {
+        background: #f0f0f0;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: $text-color;
+        &.btn-favorite {
+            &.active {
+                color: #ff5555;
+                background-color: #ffe3e3;
+                border-color: #ffe3e3;
+            }
+        }
+        &.btn-apply {
+            &.active {
+                background-color: $info;
+                border-color: $info;
+                color: $primary;
+            }
+        }
+    }
+    &.accordion-fixed {
+        position: absolute;
+        top: 0;
+        right: 0;
+        @include for-size(phone) {
+            position: unset;
+            margin-top: 1rem;
+        }
+    }
+}
+.accordion-files {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    &-check {
+        margin-right: 1rem;
+        .form-check-input {
+            width: 1em;
+            height: 1em;
+            border: 1px solid lightColor($gray, 0.5);
+        }
+    }
+}

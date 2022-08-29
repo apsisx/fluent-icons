@@ -1,0 +1,111 @@
+/*
+ __      __                        
+ \ \    / /                        
+  \ \  / /__  ___  _ __   ___ _ __ 
+   \ \/ / _ \/ _ \| '_ \ / _ \ '__|
+    \  /  __/ (_) | |_) |  __/ |   
+     \/ \___|\___/| .__/ \___|_|   
+                  | |              
+                  |_|     
+  Project Date: 2022
+  Contact: hi@veoria.com
+*/
+/*----------------IMPORTS---------------*/
+
+@import "utilities/vue";
+
+@import "utilities/variables";
+@import "utilities/mixins";
+@import "utilities/media-queries";
+
+@import "base/reset";
+@import "base/icons";
+@import "base/fonts";
+@import "base/color";
+
+@import "~bootstrap/scss/bootstrap";
+
+@import "utilities/custom";
+@import "utilities/library";
+
+@import "components/buttons";
+@import "components/input";
+@import "components/accordion";
+@import "components/list";
+@import "components/messages";
+@import "components/card";
+@import "components/tabs";
+@import "components/modal";
+
+@import "layout/carousel";
+@import "layout/nav";
+@import "layout/header";
+@import "layout/footer";
+
+@import "pages/authentication";
+@import "pages/profile";
+@import "pages/programs";
+@import "pages/school";
+
+/*--------------------------------------*/
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: $white;
+    color: $text-color;
+    font-family: $poppins;
+    -webkit-font-smoothing: antialiased;
+    &.logged {
+        margin-top: 70px;
+        padding-left: 70px;
+        padding-right: 1rem;
+        main {
+            min-height: calc(100vh - 70px);
+            background: $bg-color;
+            color: $text-color;
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            @include for-size(tablet) {
+                padding-left: unset;
+                padding-right: unset;
+            }
+        }
+        @include for-size(tablet) {
+            padding-left: unset;
+            padding-right: unset;
+            margin-bottom: 60px;
+        }
+    }
+    &:not(.logged) {
+        .v-select {
+            padding-left: 2.8rem !important;
+        }
+    }
+}
+/*-----------------------------------------*/
+main {
+    section {
+        padding: 2rem 0;
+        &#agreement {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+    }
+}
+/*-----------------------------------------*/
+::-webkit-scrollbar {
+    width: 5px;
+    background-color: $smoke;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $secondary;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: $primary;
+}
