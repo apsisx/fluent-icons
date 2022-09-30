@@ -3,23 +3,10 @@
     font-family: 'Poppins', sans-serif;
 */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700&display=swap");
-/*
-    Montserrat
-    font-family: 'Montserrat', sans-serif;
-*/
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
-/*
-    Bootstrap Icons v1.8.1
-*/
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
 
-$montserrat: "Montserrat", sans-serif;
 $poppins: "Poppins", sans-serif;
 $bootstrap-icons: "bootstrap-icons", "bootstrap-icons";
 
-.montserrat {
-    font-family: $montserrat !important;
-}
 .poppins {
     font-family: $poppins !important;
 }

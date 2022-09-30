@@ -1,125 +1,95 @@
 <script>
-	import axios from 'axios'
+import axios from "axios";
 
-	export default {
-		data() {
-			return {
-				list: [],
-				searchTerm: '',
-				activeList: 'filled'
-			}
-		},
-		computed: {
-			filtered() {
-				return this.list.filter(item => {
-					let term = new RegExp('(' + this.searchTerm + ')', 'i')
-					return item.match(term)
-				})
-			}
-		},
-		watch: {
-			activeList(val) {
-				if (val == 'regular') {
-					axios.get('/assets/fonts/FluentSystemIcons-Regular.json')
-						.then(res => {
-							this.list = res.data
-							this.list = [this.list].map((item, index) => {
-								return Object.keys(item)
-							})[0]
-						})
-				} else {
-					axios.get('/assets/fonts/FluentSystemIcons-Filled.json')
-						.then(res => {
-							this.list = res.data
-							this.list = [this.list].map((item, index) => {
-								return Object.keys(item)
-							})[0]
-						})
-				}
-			}
-		},
-		mounted() {
-			axios.get('/assets/fonts/FluentSystemIcons-Filled.json')
-				.then(res => {
-					this.list = res.data
-					this.list = [this.list].map((item, index) => {
-						return Object.keys(item)
-					})[0]
-				})
-		},
-	}
+export default {
+    data() {
+        return {
+            list: [],
+            searchTerm: "",
+            activeList: false,
+        };
+    },
+    computed: {
+        filtered() {
+            return this.list.filter((item) => {
+                let term = new RegExp("(" + this.searchTerm + ")", "i");
+                return item.match(term);
+            });
+        },
+    },
+    watch: {
+        activeList(val) {
+            console.log(val);
+            if (val) {
+                axios.get("/assets/fonts/FluentSystemIcons-Regular.json").then((res) => {
+                    this.list = res.data;
+                    this.list = [this.list].map((item, index) => {
+                        return Object.keys(item);
+                    })[0];
+                });
+            } else {
+                axios.get("/assets/fonts/FluentSystemIcons-Filled.json").then((res) => {
+                    this.list = res.data;
+                    this.list = [this.list].map((item, index) => {
+                        return Object.keys(item);
+                    })[0];
+                });
+            }
+        },
+    },
+    mounted() {
+        axios.get("/assets/fonts/FluentSystemIcons-Filled.json").then((res) => {
+            this.list = res.data;
+            this.list = [this.list].map((item, index) => {
+                return Object.keys(item);
+            })[0];
+        });
+    },
+    methods: {
+        copyBoard: function (event) {
+            console.log("ID:", event.target.dataset.id);
+            navigator.clipboard.writeText(event.target.innerHTML);
+        },
+    },
+};
 </script>
 <template>
-	<main>
-		<input type="text"
-			class="form-control-lg w-100 bg-secondary bg-opacity-10 form-control-sm rounded-fill border-0 fs-9 text-dark"
-			v-model="searchTerm" placeholder="Search for icon">
-		<div class="d-flex t-9">
-			<div class="form-check m-4">
-				<input class="form-check-input " type="radio" name="filled" id="filled" value="filled"
-					v-model="activeList">
-				<label class="form-check-label" for="filled">
-					Filled Icon
-				</label>
-			</div>
-			<div class="form-check">
-				<input class="form-check-input" type="radio" name="regular-icon" id="regular-icon" value="regular"
-					v-model="activeList">
-				<label class="form-check-label" for="regular-icon">
-					Regular Icon
-				</label>
-			</div>
-		</div>
-		<ul class="nav">
-			<li v-for="(icon, index) in filtered.slice(0,100)">
-				<div class="preview">
-					<span class="inner">
-						<i v-if="activeList == 'filled'" :class="'vf-'+icon+' icon'"></i>
-						<i v-if="activeList == 'regular'" :class="'vr-'+icon+' icon'"></i>
-					</span>
-					<br>
-					<span class='label'>{{icon}}</span>
-				</div>
-			</li>
-		</ul>
-	</main>
+    <main>
+        <section id="icons">
+            <div class="container">
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <h1 class="text-white display-4 fw-600">Fluent Icon List</h1>
+                        <div class="filter-form">
+                            <div class="input-group input-group-pd w-fit bg-light gap-1">
+                                <button type="button" class="btn text-white fs-5 p-0 ps-2 border-0"><i class="vf-ic_fluent_search_24_filled icon"></i></button>
+                                <input type="text" class="form-control-sm bg-light rounded-fill border-0 fs-9 text-white" v-model="searchTerm" placeholder=" Search for icon" />
+                            </div>
+                            <div class="form-check-group d-flex gap-3">
+                                <div class="form-check form-switch">
+                                    <label class="form-check-label" for="filled">
+                                        Type: <span class="text-primary">{{ activeList ? "Regular" : "Filled" }}</span>
+                                    </label>
+                                    <input class="form-check-input" type="checkbox" role="switch" name="filled" id="filled" value="filled" v-model="activeList" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="nav filter-list">
+                            <li v-for="(icon, index) in filtered.slice(0, 200)" class="filter-list-item">
+                                <span class="icon-format">
+                                    <i v-if="!activeList" :class="'vf-' + icon + ' icon'"></i>
+                                    <i v-if="activeList" :class="'vr-' + icon + ' icon'"></i>
+                                </span>
+                                <label class="icon-name user-select-all" @click="copyBoard" :data-id="'iconID' + index">{{ icon }}</label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 </template>
-<style scoped>
-	.preview {
-		width: 100px;
-		display: inline-block;
-		margin: 10px;
-	}
-
-	.preview .inner {
-		display: inline-block;
-		width: 100%;
-		text-align: center;
-		background: #f5f5f5;
-		-webkit-border-radius: 3px 3px 0 0;
-		-moz-border-radius: 3px 3px 0 0;
-		border-radius: 3px 3px 0 0;
-	}
-
-	.preview .inner {
-		line-height: 85px;
-		font-size: 40px;
-		color: #333;
-	}
-
-	.label {
-		display: inline-block;
-		width: 100%;
-		box-sizing: border-box;
-		padding: 5px;
-		font-size: 10px;
-		font-family: Monaco, monospace;
-		color: #666;
-		word-break: break-all;
-		background: #ddd;
-		-webkit-border-radius: 0 0 3px 3px;
-		-moz-border-radius: 0 0 3px 3px;
-		border-radius: 0 0 3px 3px;
-		color: #666;
-	}
-</style>
